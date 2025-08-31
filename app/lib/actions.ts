@@ -25,7 +25,7 @@ const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
-export async function createInvoice(prevState: State, formData: FormData) {
+export async function createInvoice(prevState: any, formData: FormData) {
   const validatedFields = CreateInvoice.safeParse({
     customerId: formData.get("customerId"),
     amount: formData.get("amount"),
@@ -65,7 +65,7 @@ const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function updateInvoice(
   id: string,
-  prevState: State,
+  prevState: any,
   formData: FormData
 ) {
   const validatedFields = UpdateInvoice.safeParse({
