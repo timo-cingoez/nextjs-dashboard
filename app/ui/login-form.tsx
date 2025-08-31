@@ -11,11 +11,12 @@ import { Button } from "./button";
 import { authenticate } from "@/app/lib/actions";
 import { useActionState } from "react";
 import { useSearchParams } from "next/navigation";
+import { State } from "@/app/lib/definitions";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
-  const initialState = { message: null, errors: {} };
+  const initialState: State = { message: null, errors: {} };
   const [errorMessage, formAction, isPending] = useActionState(
     authenticate,
     undefined
